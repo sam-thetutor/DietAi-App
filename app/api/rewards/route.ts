@@ -380,29 +380,29 @@ export async function POST(request: NextRequest) {
 // }
 
 // Helper function to unlock an achievement
-async function unlockAchievement(address: string, achievementId: string, db: any) {
-  const userData = await db.collection('rewards').findOne({ address });
-  if (!userData) return;
+// async function unlockAchievement(address: string, achievementId: string, db: any) {
+//   const userData = await db.collection('rewards').findOne({ address });
+//   if (!userData) return;
   
-  const achievement = userData.achievements.find(a => a.id === achievementId);
-  if (!achievement || achievement.isUnlocked) return;
+//   const achievement = userData.achievements.find(a => a.id === achievementId);
+//   if (!achievement || achievement.isUnlocked) return;
   
-  await db.collection('rewards').updateOne(
-    { address, "achievements.id": achievementId },
-    { 
-      $set: { 
-        "achievements.$.isUnlocked": true,
-        "achievements.$.dateUnlocked": new Date()
-      },
-      $inc: { totalPoints: achievement.pointsAwarded },
-      $push: { 
-        pointsHistory: {
-          timestamp: new Date(),
-          action: 'achievement_unlocked',
-          points: achievement.pointsAwarded,
-          description: `Unlocked achievement: ${achievement.name}`
-        }
-      }
-    }
-  );
-} 
+//   await db.collection('rewards').updateOne(
+//     { address, "achievements.id": achievementId },
+//     { 
+//       $set: { 
+//         "achievements.$.isUnlocked": true,
+//         "achievements.$.dateUnlocked": new Date()
+//       },
+//       $inc: { totalPoints: achievement.pointsAwarded },
+//       $push: { 
+//         pointsHistory: {
+//           timestamp: new Date(),
+//           action: 'achievement_unlocked',
+//           points: achievement.pointsAwarded,
+//           description: `Unlocked achievement: ${achievement.name}`
+//         }
+//       }
+//     }
+//   );
+// } 
