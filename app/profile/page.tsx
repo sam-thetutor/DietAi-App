@@ -1,4 +1,3 @@
-// @ts-nocheck
 "use client";
 
 import {
@@ -10,14 +9,11 @@ import {
   Wallet,
 } from "@coinbase/onchainkit/wallet";
 import { useEffect, useMemo, useState, useCallback } from "react";
-import { Button, Card } from "../components/DemoComponents";
+import { Button } from "../components/DemoComponents";
 import { Icon } from "../components/DemoComponents";
 import Link from "next/link";
 import { useAccount } from "wagmi";
-import Image from "next/image";
-import RewardsDashboard from "../components/RewardsDashboard";
 import { useRewards } from "../contexts/RewardsContext";
-import { RewardsIndicator } from "../components/RewardsIndicator";
 // Define types for profile data
 type HealthGoal = "weight_loss" | "weight_gain" | "maintenance";
 type ActivityLevel = "sedentary" | "light" | "moderate" | "active" | "very_active";
@@ -50,8 +46,8 @@ export default function ProfilePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  const [isSaving, setIsSaving] = useState(false);
-  const [saveSuccess, setSaveSuccess] = useState(false);
+  // const [isSaving, setIsSaving] = useState(false);
+  // const [saveSuccess, setSaveSuccess] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const addFrame = useAddFrame();
@@ -164,7 +160,6 @@ export default function ProfilePage() {
     event.preventDefault();
     if (!address) return;
 
-    setIsSaving(true);
     setError(null);
     setSuccessMessage(null);
 
@@ -190,7 +185,6 @@ export default function ProfilePage() {
       }
 
       setIsProfileCreated(true);
-      setSaveSuccess(true);
       
       // Check if this is the first time completing the profile
       const isProfileComplete = 
@@ -213,9 +207,8 @@ export default function ProfilePage() {
     } catch (err) {
       console.error("Error saving profile:", err);
       setError(`Failed to save profile: ${err.message}`);
-    } finally {
-      setIsSaving(false);
-    }
+    } 
+    
   };
 
   // Basic input styling

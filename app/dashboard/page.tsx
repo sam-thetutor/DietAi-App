@@ -1,6 +1,4 @@
-// @ts-nocheck
 "use client";
-
 import Link from "next/link";
 import { Card, Button } from "../components/DemoComponents";
 import { useState, useEffect, useMemo, useRef } from "react";
@@ -115,10 +113,10 @@ export default function DashboardPage() {
   const [isLoadingCalories, setIsLoadingCalories] = useState(true);
   const { address } = useAccount();
 
-  // --- State for Recommendations ---
-  const [recommendations, setRecommendations] = useState<string[]>([]);
-  const [isLoadingRecs, setIsLoadingRecs] = useState(false);
-  const [errorRecs, setErrorRecs] = useState<string | null>(null);
+  // // --- State for Recommendations ---
+  // const [recommendations, setRecommendations] = useState<string[]>([]);
+  // const [isLoadingRecs, setIsLoadingRecs] = useState(false);
+  // const [errorRecs, setErrorRecs] = useState<string | null>(null);
 
   // --- State for Meal Plan ---
   const [mealPlan, setMealPlan] = useState<MealPlan | null>(null);
@@ -465,7 +463,7 @@ export default function DashboardPage() {
                 </div>
               </Card>
 
-              {/* Food Suggestions Card */}
+              {/* Food Suggestions Card
               <Card title="">
                 {isLoadingRecs && (
                   <div className="flex justify-center items-center py-4">
@@ -498,7 +496,7 @@ export default function DashboardPage() {
                     )}
                   </>
                 )}
-              </Card>
+              </Card> */}
 
               {/* AI Meal Plan Card */}
               <Card title="📅 AI Meal Plan Suggestions">

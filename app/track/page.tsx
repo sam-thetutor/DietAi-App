@@ -1,20 +1,9 @@
-// @ts-nocheck
 "use client";
 
-import {
-  useMiniKit,
-  useAddFrame,
-} from "@coinbase/onchainkit/minikit";
-import {
-  ConnectWallet,
-  Wallet,
-} from "@coinbase/onchainkit/wallet";
-import { useEffect, useMemo, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Button, Card } from "../components/DemoComponents";
-import { Icon } from "../components/DemoComponents";
 import Link from "next/link";
 import { useAccount } from "wagmi";
-import Image from "next/image";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'; // Default styling for the calendar
 import CameraModal from './CameraModal';
@@ -89,14 +78,7 @@ const calculateDailyTotal = (meals: MealCalories | undefined): number => {
 };
 
 export default function TrackPage() {
-  const { setFrameReady, isFrameReady, context } = useMiniKit();
-  const [frameAdded, setFrameAdded] = useState(false);
-  const [mealType, setMealType] = useState("breakfast");
-  const [showCamera, setShowCamera] = useState(false);
-
-  const addFrame = useAddFrame();
   const { address } = useAccount();
-
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [allCalories, setAllCalories] = useState<AllCalories>({});
   const [currentCalories, setCurrentCalories] = useState<MealCalories>({
@@ -126,45 +108,7 @@ export default function TrackPage() {
   const supperFileRef = useRef<HTMLInputElement>(null);
 
   const { addPoints, unlockAchievement } = useRewards();
-
-  useEffect(() => {
-    if (!isFrameReady) {
-      setFrameReady();
-    }
-  }, [setFrameReady, isFrameReady]);
-
-  const handleAddFrame = useCallback(async () => {
-    const frameAdded = await addFrame();
-    setFrameAdded(Boolean(frameAdded));
-  }, [addFrame]);
-
-  const saveFrameButton = useMemo(() => {
-    if (context && !context.client.added) {
-      return (
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={handleAddFrame}
-          className="text-[var(--app-accent)] p-4"
-          icon={<Icon name="plus" size="sm" />}
-        >
-          Save Frame
-        </Button>
-      );
-    }
-
-    if (frameAdded) {
-      return (
-        <div className="flex items-center space-x-1 text-sm font-medium text-[#0052FF] animate-fade-out">
-          <Icon name="check" size="sm" className="text-[#0052FF]" />
-          <span>Saved</span>
-        </div>
-      );
-    }
-
-    return null;
-  }, [context, frameAdded, handleAddFrame]);
-
+  
   // Update the useEffect for loading data for the selected date
   useEffect(() => {
     const dateKey = formatDateKey(selectedDate);
@@ -512,20 +456,8 @@ export default function TrackPage() {
     );
   };
 
-  // Calendar tile class name - highlight days with data
-  const tileClassName = ({ date, view }: { date: Date; view: string }) => {
-    if (view === 'month') {
-      const dateKey = formatDateKey(date);
-      if (allCalories[dateKey]) {
-        return 'has-data';
-      }
-    }
-    return null;
-  };
-
   // Styling classes
   const labelClasses = "block text-sm font-medium text-gray-600 mb-1";
-  const inputClasses = "block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 sm:text-sm text-gray-700 disabled:opacity-50";
 
   if (isLoading) {
     return (

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { NextRequest, NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/mongodb';
 
@@ -311,74 +310,74 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// Add this function to update streaks
-async function updateStreak(address: string, db: any) {
-  const userData = await db.collection('rewards').findOne({ address });
-  if (!userData) return;
+// // Add this function to update streaks
+// async function updateStreak(address: string, db: any) {
+//   const userData = await db.collection('rewards').findOne({ address });
+//   if (!userData) return;
   
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+//   const today = new Date();
+//   today.setHours(0, 0, 0, 0);
   
-  const lastStreak = userData.lastStreak ? new Date(userData.lastStreak) : null;
+//   const lastStreak = userData.lastStreak ? new Date(userData.lastStreak) : null;
   
-  if (!lastStreak) {
-    // First time logging, start streak
-    await db.collection('rewards').updateOne(
-      { address },
-      { 
-        $set: { 
-          lastStreak: today,
-          currentStreak: 1
-        }
-      }
-    );
-    return;
-  }
+//   if (!lastStreak) {
+//     // First time logging, start streak
+//     await db.collection('rewards').updateOne(
+//       { address },
+//       { 
+//         $set: { 
+//           lastStreak: today,
+//           currentStreak: 1
+//         }
+//       }
+//     );
+//     return;
+//   }
   
-  // Calculate days between last streak and today
-  const lastStreakDate = new Date(lastStreak);
-  lastStreakDate.setHours(0, 0, 0, 0);
+//   // Calculate days between last streak and today
+//   const lastStreakDate = new Date(lastStreak);
+//   lastStreakDate.setHours(0, 0, 0, 0);
   
-  const diffTime = Math.abs(today.getTime() - lastStreakDate.getTime());
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+//   const diffTime = Math.abs(today.getTime() - lastStreakDate.getTime());
+//   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   
-  if (diffDays === 1) {
-    // Consecutive day, increment streak
-    const newStreak = userData.currentStreak + 1;
-    const longestStreak = Math.max(newStreak, userData.longestStreak || 0);
+//   if (diffDays === 1) {
+//     // Consecutive day, increment streak
+//     const newStreak = userData.currentStreak + 1;
+//     const longestStreak = Math.max(newStreak, userData.longestStreak || 0);
     
-    await db.collection('rewards').updateOne(
-      { address },
-      { 
-        $set: { 
-          lastStreak: today,
-          currentStreak: newStreak,
-          longestStreak: longestStreak
-        }
-      }
-    );
+//     await db.collection('rewards').updateOne(
+//       { address },
+//       { 
+//         $set: { 
+//           lastStreak: today,
+//           currentStreak: newStreak,
+//           longestStreak: longestStreak
+//         }
+//       }
+//     );
     
-    // Check for streak achievements
-    if (newStreak === 3) {
-      await unlockAchievement(address, 'meal_streak_3', db);
-    } else if (newStreak === 7) {
-      await unlockAchievement(address, 'meal_streak_7', db);
-    }
+//     // Check for streak achievements
+//     if (newStreak === 3) {
+//       await unlockAchievement(address, 'meal_streak_3', db);
+//     } else if (newStreak === 7) {
+//       await unlockAchievement(address, 'meal_streak_7', db);
+//     }
     
-  } else if (diffDays > 1) {
-    // Streak broken, reset to 1
-    await db.collection('rewards').updateOne(
-      { address },
-      { 
-        $set: { 
-          lastStreak: today,
-          currentStreak: 1
-        }
-      }
-    );
-  }
-  // If diffDays === 0, it's the same day, do nothing
-}
+//   } else if (diffDays > 1) {
+//     // Streak broken, reset to 1
+//     await db.collection('rewards').updateOne(
+//       { address },
+//       { 
+//         $set: { 
+//           lastStreak: today,
+//           currentStreak: 1
+//         }
+//       }
+//     );
+//   }
+//   // If diffDays === 0, it's the same day, do nothing
+// }
 
 // Helper function to unlock an achievement
 async function unlockAchievement(address: string, achievementId: string, db: any) {

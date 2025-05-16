@@ -1,43 +1,28 @@
-// @ts-nocheck
 "use client";
 
 import {
   useMiniKit,
-  useAddFrame,
-  useOpenUrl,
 } from "@coinbase/onchainkit/minikit";
-import {
-  Name,
-  Identity,
-  Address,
-  Avatar,
-  EthBalance,
-} from "@coinbase/onchainkit/identity";
+
 import {
   ConnectWallet,
   Wallet,
-  WalletDropdown,
-  WalletDropdownDisconnect,
 } from "@coinbase/onchainkit/wallet";
-import { useEffect, useMemo, useState, useCallback } from "react";
-import { Button, Card } from "./components/DemoComponents";
-import { Icon } from "./components/DemoComponents";
-import { Home } from "./components/DemoComponents";
-import { Features } from "./components/DemoComponents";
+import { useEffect, useState } from "react";
+import { Button,  } from "./components/DemoComponents";
 import Link from "next/link";
-import { useAccount } from "wagmi";
 import Image from "next/image";
+import { useAccount } from "wagmi";
 
 export default function App() {
-  const { setFrameReady, isFrameReady, context } = useMiniKit();
-  const [frameAdded, setFrameAdded] = useState(false);
-  const [activeTab, setActiveTab] = useState("home");
+  const { setFrameReady, isFrameReady } = useMiniKit();
+  // const [frameAdded, setFrameAdded] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const addFrame = useAddFrame();
-  const { address } = useAccount();
+  // const addFrame = useAddFrame();
+   const { address } = useAccount();
 
-  const openUrl = useOpenUrl();
+  // const openUrl = useOpenUrl();
 
   useEffect(() => {
     if (!isFrameReady) {
@@ -45,37 +30,37 @@ export default function App() {
     }
   }, [setFrameReady, isFrameReady]);
 
-  const handleAddFrame = useCallback(async () => {
-    const frameAdded = await addFrame();
-    setFrameAdded(Boolean(frameAdded));
-  }, [addFrame]);
+  // const handleAddFrame = useCallback(async () => {
+  //   const frameAdded = await addFrame();
+  //   setFrameAdded(Boolean(frameAdded));
+  // }, [addFrame]);
 
-  const saveFrameButton = useMemo(() => {
-    if (context && !context.client.added) {
-      return (
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={handleAddFrame}
-          className="text-[var(--app-accent)] p-4"
-          icon={<Icon name="plus" size="sm" />}
-        >
-          Save Frame
-        </Button>
-      );
-    }
+  // const saveFrameButton = useMemo(() => {
+  //   if (context && !context.client.added) {
+  //     return (
+  //       <Button
+  //         variant="ghost"
+  //         size="sm"
+  //         onClick={handleAddFrame}
+  //         className="text-[var(--app-accent)] p-4"
+  //         icon={<Icon name="plus" size="sm" />}
+  //       >
+  //         Save Frame
+  //       </Button>
+  //     );
+  //   }
 
-    if (frameAdded) {
-      return (
-        <div className="flex items-center space-x-1 text-sm font-medium text-[#0052FF] animate-fade-out">
-          <Icon name="check" size="sm" className="text-[#0052FF]" />
-          <span>Saved</span>
-        </div>
-      );
-    }
+  //   if (frameAdded) {
+  //     return (
+  //       <div className="flex items-center space-x-1 text-sm font-medium text-[#0052FF] animate-fade-out">
+  //         <Icon name="check" size="sm" className="text-[#0052FF]" />
+  //         <span>Saved</span>
+  //       </div>
+  //     );
+  //   }
 
-    return null;
-  }, [context, frameAdded, handleAddFrame]);
+  //   return null;
+  // }, [context, frameAdded, handleAddFrame]);
 
   return (
     <div className="flex flex-col min-h-screen font-sans text-[var(--app-foreground)] mini-app-theme from-[var(--app-background)] to-[var(--app-gray)]">
