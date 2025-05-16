@@ -1,104 +1,82 @@
-# MiniKit Template
+# DietAI: AI-Powered Diet Tracking with Web3 Rewards
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-onchain --mini`](), configured with:
+## 🌟 Vision
+Revolutionizing diet tracking by combining AI technology with blockchain rewards to make healthy eating engaging and rewarding.
 
-- [MiniKit](https://docs.base.org/builderkits/minikit/overview)
-- [OnchainKit](https://www.base.org/builders/onchainkit)
-- [Tailwind CSS](https://tailwindcss.com)
-- [Next.js](https://nextjs.org/docs)
+## 🎯 Problem
+- Traditional diet tracking apps are tedious and time-consuming
+- Manual calorie counting leads to poor user adherence
+- Lack of motivation to maintain consistent dietary habits
+- High dropout rates in diet tracking apps
 
-## Getting Started
+## 💡 Solution
+DietAI offers a seamless solution that combines:
+- Real-time AI food recognition through your camera
+- Instant calorie estimation
+- Blockchain-based reward system
+- Gamification of dietary goals
 
-1. Install dependencies:
-```bash
-npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
-```
+## 🔑 Key Features
+1. **AI-Powered Food Recognition**
+   - Point-and-scan interface
+   - Real-time calorie estimation
+   - No manual input required
 
-2. Verify environment variables, these will be set up by the `npx create-onchain --mini` command:
+2. **Smart Contract Rewards**
+   - Earn DIET tokens for hitting daily targets
+   - Built on Base blockchain for low fees
+   - Transparent reward distribution
 
-You can regenerate the FARCASTER Account Association environment variables by running `npx create-onchain --manifest` in your project directory.
+3. **User Experience**
+   - Intuitive mobile-first design
+   - Seamless wallet integration
+   - Real-time progress tracking
 
-The environment variables enable the following features:
+## 🎯 Target Market
+- Health-conscious individuals aged 18-45
+- Crypto-native users interested in health
+- Fitness enthusiasts
+- Weight management seekers
 
-- Frame metadata - Sets up the Frame Embed that will be shown when you cast your frame
-- Account association - Allows users to add your frame to their account, enables notifications
-- Redis API keys - Enable Webhooks and background notifications for your application by storing users notification details
+## 💰 Business Model
+- Freemium model with premium features
+- Token economics for sustainable rewards
+- Partnership opportunities with health brands
+- Integration with existing fitness platforms
 
-```bash
-# Required for Frame metadata
-NEXT_PUBLIC_URL=
-NEXT_PUBLIC_VERSION=
-NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME=
-NEXT_PUBLIC_ICON_URL=
-NEXT_PUBLIC_IMAGE_URL=
-NEXT_PUBLIC_SPLASH_IMAGE_URL=
-NEXT_PUBLIC_SPLASH_BACKGROUND_COLOR=
+## 🛣️ Roadmap
+**Phase 1 - Q2 2024**
+- MVP Launch
+- Basic AI recognition
+- Token rewards system
 
-# Required to allow users to add your frame
-FARCASTER_HEADER=
-FARCASTER_PAYLOAD=
-FARCASTER_SIGNATURE=
+**Phase 2 - Q3 2024**
+- Enhanced AI accuracy
+- Social features
+- Community challenges
 
-# Required for webhooks and background notifications
-REDIS_URL=
-REDIS_TOKEN=
-```
+**Phase 3 - Q4 2024**
+- Mobile app launch
+- Integration with fitness wearables
+- Advanced analytics
 
-3. Start the development server:
-```bash
-npm run dev
-```
+## 👥 Team
+[Your team details here]
 
-## Template Features
+## 🤝 Partners
+- Base Blockchain
+- OpenAI
+- [Other partners]
 
-### Frame Configuration
-- `.well-known/farcaster.json` endpoint configured for Frame metadata and account association
-- Frame metadata automatically added to page headers in `layout.tsx`
+## 📊 Market Opportunity
+- Global diet tracking app market: $4.4B (2023)
+- Expected CAGR: 16.4% (2024-2030)
+- Web3 fitness market: Growing at 32% annually
 
-### Background Notifications
-- Redis-backed notification system using Upstash
-- Ready-to-use notification endpoints in `api/notify` and `api/webhook`
-- Notification client utilities in `lib/notification-client.ts`
+## 💻 Technical Stack
+- Frontend: Next.js, React
+- AI: TensorFlow.js, GPT-4 Vision
+- Blockchain: Base, Solidity
+- Infrastructure: OpenAI, Upstash
 
-### Theming
-- Custom theme defined in `theme.css` with OnchainKit variables
-- Pixel font integration with Pixelify Sans
-- Dark/light mode support through OnchainKit
-
-### MiniKit Provider
-The app is wrapped with `MiniKitProvider` in `providers.tsx`, configured with:
-- OnchainKit integration
-- Access to Frames context
-- Sets up Wagmi Connectors
-- Sets up Frame SDK listeners
-- Applies Safe Area Insets
-
-## Customization
-
-To get started building your own frame, follow these steps:
-
-1. Remove the DemoComponents:
-   - Delete `components/DemoComponents.tsx`
-   - Remove demo-related imports from `page.tsx`
-
-2. Start building your Frame:
-   - Modify `page.tsx` to create your Frame UI
-   - Update theme variables in `theme.css`
-   - Adjust MiniKit configuration in `providers.tsx`
-
-3. Add your frame to your account:
-   - Cast your frame to see it in action
-   - Share your frame with others to start building your community
-
-## Learn More
-
-- [MiniKit Documentation](https://docs.base.org/builderkits/minikit/overview)
-- [OnchainKit Documentation](https://docs.base.org/builderkits/onchainkit/getting-started)
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+## 🚀 Getting Started

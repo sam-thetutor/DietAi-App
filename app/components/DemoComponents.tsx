@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { type ReactNode, useCallback, useMemo, useState } from "react";
@@ -78,7 +79,7 @@ type CardProps = {
   onClick?: () => void;
 }
 
-function Card({
+export function Card({
   title,
   children,
   className = "",
@@ -160,21 +161,9 @@ type HomeProps = {
 export function Home({ setActiveTab }: HomeProps) {
   return (
     <div className="space-y-6 animate-fade-in">
-      <Card title="My First Mini App">
-        <p className="text-[var(--app-foreground-muted)] mb-4">
-          This is a minimalistic Mini App built with OnchainKit components.
-        </p>
-        <Button
-          onClick={() => setActiveTab("features")}
-          icon={<Icon name="arrow-right" size="sm" />}
-        >
-          Explore Features
-        </Button>
-      </Card>
+      
 
-      <TodoList />
 
-      <TransactionCard />
     </div>
   );
 }

@@ -3,6 +3,8 @@
 import { type ReactNode } from "react";
 import { base } from "wagmi/chains";
 import { MiniKitProvider } from "@coinbase/onchainkit/minikit";
+import { RewardsProvider } from "./contexts/RewardsContext";
+import { Toaster } from "react-hot-toast";
 
 export function Providers(props: { children: ReactNode }) {
   return (
@@ -18,7 +20,10 @@ export function Providers(props: { children: ReactNode }) {
         },
       }}
     >
-      {props.children}
+      <RewardsProvider>
+        <Toaster position="top-center" />
+        {props.children}
+      </RewardsProvider>
     </MiniKitProvider>
   );
 }
