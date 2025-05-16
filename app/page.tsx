@@ -113,11 +113,15 @@ export default function App() {
 
               <div className="flex justify-center gap-4 mt-8">
                 {!address ? (
+
+                  
+
+
                   <Wallet>
-                    <ConnectWallet>
+                    <ConnectWallet text="Connect" className="bg-green-600 hover:bg-green-700 text-white px-6 py-3" >
                       <Button
                         variant="secondary"
-                        size="lg"
+                        size="sm"
                         className="bg-green-600 hover:bg-green-700 text-white px-6 py-4"
                       >
                         Connect Wallet
@@ -128,8 +132,8 @@ export default function App() {
                   <Link href="/dashboard" className="inline-block">
                     <Button
                       variant="primary"
-                      size="lg"
-                      className="bg-green-600 hover:bg-green-700 text-white px-6 py-4"
+                      size="md"
+                      className="bg-green-600 hover:bg-green-700 text-white px-6 py-3"
                     >
                       Go to Dashboard
                     </Button>
