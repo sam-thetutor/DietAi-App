@@ -15,7 +15,8 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  output: 'export',
+  // Change back to standalone to support API routes
+  output: 'standalone',
 };
 
 export default nextConfig;

@@ -61,8 +61,43 @@ export default function CameraModal({ isOpen, onClose, onCaptureSuccess, mealTyp
     }
   };
 
-  // Rest of your component remains the same...
-  // ...
+  // Function to capture image
+  const captureImage = () => {
+    if (!videoRef.current || !canvasRef.current || !mealType) return;
+    
+    setIsCaptureLoading(true);
+    
+    try {
+      const video = videoRef.current;
+      const canvas = canvasRef.current;
+      const context = canvas.getContext('2d');
+      
+      if (!context) {
+        throw new Error('Could not get canvas context');
+      }
+      
+      // Set canvas dimensions to match video
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      
+      // Draw the video frame to the canvas
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      
+      // Convert canvas to data URL
+      const imageDataUrl = canvas.toDataURL('image/jpeg', 0.8);
+      
+      // Pass the image data to the parent component
+      onCaptureSuccess(imageDataUrl, mealType);
+      
+      // Close the modal
+      onClose();
+    } catch (err) {
+      console.error('Error capturing image:', err);
+      setError(`Capture error: ${err.message || 'Unknown error'}`);
+    } finally {
+      setIsCaptureLoading(false);
+    }
+  };
 
   return (
     <div className={`fixed inset-0 z-50 flex items-center justify-center ${isOpen ? 'visible' : 'invisible'}`}>
