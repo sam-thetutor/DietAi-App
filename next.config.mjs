@@ -15,7 +15,7 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  output: 'standalone',
+  output: 'export',
 };
 
 export default nextConfig;

@@ -1,9 +1,15 @@
 "use client";
 
 import { useAccount } from "wagmi";
-import RewardsDashboard from "../components/RewardsDashboard";
+import dynamic from 'next/dynamic';
 import Link from "next/link";
 import { useState } from "react";
+
+// Import RewardsDashboard with no SSR
+const RewardsDashboard = dynamic(
+  () => import('../components/RewardsDashboard'),
+  { ssr: false } // This ensures the component only loads on the client side
+);
 
 export default function RewardsPage() {
   const { address } = useAccount();
@@ -83,6 +89,7 @@ export default function RewardsPage() {
         </div> */}
 
             <main>
+              {/* Only render on client side */}
               <RewardsDashboard />
             </main>
           </div>
