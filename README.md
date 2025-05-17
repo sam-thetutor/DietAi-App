@@ -1,5 +1,18 @@
 # DietAI: AI-Powered Diet Tracking with Web3 Rewards
 
+
+DietAI is an innovative diet tracking app that combines advanced AI technology with blockchain rewards to transform the way people manage their nutrition. It uses real-time food recognition through a simple camera scan to instantly estimate calories without manual input, making diet tracking effortless and accurate. By integrating a blockchain-based reward system, DietAI motivates users to achieve their dietary goals by earning tokens, gamifying the experience and encouraging consistent healthy habits. Designed for health-conscious individuals and crypto enthusiasts alike, DietAI offers a seamless, engaging, and rewarding approach to maintaining a balanced diet.
+
+
+
+# Background
+
+Many people want to maintain healthy habits or even reach their health goals, but they often struggle with the tedious and time-consuming nature of traditional diet tracking methods. Manually logging every meal and counting calories can quickly become overwhelming and error-prone, leading to frustration and poor adherence. As a result, many users abandon diet tracking apps within a short period, lacking the motivation and engagement needed to sustain consistent dietary habits. DietAI solves these problems by leveraging advanced AI technology to provide real-time food recognition and instant calorie estimation with just a simple scan, eliminating the need for manual input. Coupled with a blockchain-based rewards system that gamifies dietary goals, DietAI makes healthy eating both effortless and motivating, helping users stay on track and achieve their wellness objectives.
+
+
+Many people want to maintain healthy habits and reach their health goals but find traditional diet tracking tedious and hard to stick with. DietAI simplifies this by using AI for real-time food recognition and instant calorie counting, removing manual effort. Its blockchain-based rewards system gamifies progress, making healthy eating engaging and motivating for lasting success.
+
+
 ## 🌟 Vision
 Revolutionizing diet tracking by combining AI technology with blockchain rewards to make healthy eating engaging and rewarding.
 
@@ -59,9 +72,6 @@ DietAI offers a seamless solution that combines:
 - Mobile app launch
 - Integration with fitness wearables
 - Advanced analytics
-
-## 👥 Team
-[Your team details here]
 
 ## 🤝 Partners
 - Base Blockchain
